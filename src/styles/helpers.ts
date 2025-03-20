@@ -25,7 +25,7 @@ export const defaultAppearanceStyles = css({
  * Also sets font smoothing for better display in MacOS.
  */
 export const defaultFontStyles = css({
-  fontFamily: "sans-serif",
+  fontFamily: "system-ui, sans-serif",
   lineHeight: 1.5,
   WebkitFontSmoothing: "antialiased",
 });
