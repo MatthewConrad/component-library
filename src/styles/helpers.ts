@@ -40,13 +40,28 @@ export const resetHelper = css({
   ...defaultFontStyles,
 });
 
+const ROOT_FONT_SIZE = 16;
+
+/**
+ * Converts a size in pixels to `rem` units, based on a root font size of 16 pixels.
+ * @param size - the size in pixels
+ * @returns the size in `rem` units
+ */
+export const rem = (size: number) => {
+  if (size === 0) {
+    return "0";
+  }
+
+  return `${size / ROOT_FONT_SIZE}rem`;
+};
+
 /**
  * Sets both height and width to the same value.
  *
  * @param size
- * @returns CSS declarations for `height` and `width` in pixels.
+ * @returns CSS declarations for `height` and `width` in `rem` units.
  */
 export const square = (size: number) => css`
-  height: ${size}px;
-  width: ${size}px;
+  height: ${rem(size)};
+  width: ${rem(size)};
 `;
