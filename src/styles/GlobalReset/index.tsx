@@ -71,7 +71,7 @@ const reset = css`
  * Note that the components in this library assume these styles are being applied. If you do _not_ use this reset,
  * components may not render properly.
  *
- * The rules here are based on Josh Comeau's CSS reset (https://www.joshwcomeau.com/css/custom-css-reset/), with
+ * The rules here are based on [Josh Comeau's CSS reset](https://www.joshwcomeau.com/css/custom-css-reset/), with
  * additions to:
  * - remove default outline
  * - remove default border

@@ -25,6 +25,7 @@ export const defaultAppearanceStyles = css({
  * Also sets font smoothing for better display in MacOS.
  */
 export const defaultFontStyles = css({
+  fontFamily: "sans-serif",
   lineHeight: 1.5,
   WebkitFontSmoothing: "antialiased",
 });
@@ -33,8 +34,19 @@ export const defaultFontStyles = css({
  * Sets all default and reset styles.
  * Should only be used if it's not possible to use the `<GlobalReset />`
  */
-export const resetHelper = css`
-  ${defaultBoxSizingStyles}
-  ${defaultAppearanceStyles}
-    ${defaultFontStyles}
+export const resetHelper = css({
+  ...defaultBoxSizingStyles,
+  ...defaultAppearanceStyles,
+  ...defaultFontStyles,
+});
+
+/**
+ * Sets both height and width to the same value.
+ *
+ * @param size
+ * @returns CSS declarations for `height` and `width` in pixels.
+ */
+export const square = (size: number) => css`
+  height: ${size}px;
+  width: ${size}px;
 `;

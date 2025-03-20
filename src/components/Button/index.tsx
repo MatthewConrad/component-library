@@ -1,9 +1,11 @@
-import { ComponentPropsWithRef } from "react";
+import { BaseElement } from "../../BaseElement";
+import { PolymorphicProps } from "../../types/polymorphism";
+import * as Styles from "./Button.styles";
 
-import { Main } from "./Button.styles";
+export interface ButtonProps extends PolymorphicProps<"button"> {}
 
-export interface ButtonProps extends ComponentPropsWithRef<"button"> {}
-
-export const Button = (props: ButtonProps) => <Main {...props} />;
+export const Button = (props: ButtonProps) => (
+  <BaseElement as="button" css={Styles.Main} {...props} />
+);
 
 Button.displayName = "Button";

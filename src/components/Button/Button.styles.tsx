@@ -1,8 +1,7 @@
-import newStyled from "@emotion/styled";
+import { css } from "@emotion/react";
 
-export const Main = newStyled.button`
-padding: 4px 8px;  
-border-radius: 4px;
-
-background-color: lightblue;
-`;
+export const Main = css({
+  padding: "4px 8px",
+  borderRadius: 6,
+  backgroundColor: "lightblue",
+});
