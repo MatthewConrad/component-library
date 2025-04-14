@@ -1,5 +1,4 @@
-/** Variants for dimensions and related tokens. */
-export type Size = "xsmall" | "small" | "medium" | "large" | "xlarge";
+import { Size } from "../styles/Tokens/dimension";
 
 export interface SizeProps {
   /** The size of the component. */
