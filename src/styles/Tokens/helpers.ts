@@ -37,14 +37,29 @@ export const generateTokens = <Group extends string, Member extends string>(
     {} as Record<Group, Record<Member, string>>,
   );
 
-export const outputThemeVars = <Group extends string, Member extends string>(
-  tokens: ThemeTokenSet<Group, Member>,
+type Tokens<T> = {
+  [k: string]: T | Tokens<T>;
+};
+
+const reduceToVarNames = (
+  tokens: Tokens<string | number>,
+  prefix?: string,
+): Record<string, string | number> =>
+  Object.entries(tokens).reduce((acc, [key, val]) => {
+    const updatedKey = `${prefix ? `${prefix}-` : ""}${key}`;
+
+    if (typeof val !== "string" && typeof val !== "number") {
+      return { ...acc, ...reduceToVarNames(val, updatedKey) };
+    }
+
+    return { ...acc, [updatedKey]: val };
+  }, {});
+
+export const outputThemeVars = (
+  tokens: Tokens<string | number>,
   prefix?: string,
 ) => css`
-  ${Object.entries(tokens).map(([group, members]) =>
-    Object.entries(members as Record<Member, string>).map(
-      ([member, value]) =>
-        `$--${prefix ? `${prefix}-` : ""}-${group}-${member}: ${value};`,
-    ),
+  ${Object.entries(reduceToVarNames(tokens, prefix)).map(
+    ([varName, value]) => `--${varName}: ${value};`,
   )}
 `;

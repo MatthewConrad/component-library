@@ -1,5 +1,7 @@
 import { Global, css } from "@emotion/react";
 
+import { DEFAULT_TOKEN_VALUES, ThemeTokenValues } from "../Tokens";
+import { outputThemeVars } from "../Tokens/helpers";
 import {
   defaultAppearanceStyles,
   defaultBoxSizingStyles,
@@ -65,6 +67,18 @@ const reset = css`
   }
 `;
 
+const themeStyles = (themeTokens: ThemeTokenValues) => css`
+  :root {
+    ${outputThemeVars(themeTokens.dimension, "dimension")}
+    ${outputThemeVars(themeTokens.brandColor, "color")}
+    ${outputThemeVars(themeTokens.utilityColor, "color")}
+  }
+`;
+
+interface GlobalResetProps {
+  themeTokens?: ThemeTokenValues;
+}
+
 /**
  * Applies a global CSS reset.
  *
@@ -80,4 +94,13 @@ const reset = css`
  * - set default text colors
  * - set default transition timing function and duration
  */
-export const GlobalReset = () => <Global styles={reset} />;
+export const GlobalReset = ({
+  themeTokens = DEFAULT_TOKEN_VALUES,
+}: GlobalResetProps) => (
+  <Global
+    styles={css`
+      ${reset}
+      ${themeStyles(themeTokens)}
+    `}
+  />
+);

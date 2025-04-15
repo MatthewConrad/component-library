@@ -61,7 +61,10 @@ export const rem = (size: number) => {
  * @param size
  * @returns CSS declarations for `height` and `width` in `rem` units.
  */
-export const square = (size: number) => css`
-  height: ${rem(size)};
-  width: ${rem(size)};
-`;
+export const square = (size: number | string) => {
+  const value = isNaN(Number(size)) ? `${size}` : rem(Number(size));
+  return css`
+    height: ${value};
+    width: ${value};
+  `;
+};

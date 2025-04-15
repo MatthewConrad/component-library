@@ -1,3 +1,4 @@
+import { rem } from "../helpers";
 import { generateTokens } from "./helpers";
 
 const SIZES = ["xsmall", "small", "medium", "large", "xlarge"] as const;
@@ -9,33 +10,33 @@ export type Size = (typeof SIZES)[number];
 type Dimension = (typeof DIMENSIONS)[number];
 
 export type DimensionTokens = Record<Dimension, Record<Size, string>>;
-export type ThemeDimensionTokens = Record<Dimension, Record<Size, number>>;
+export type ThemeDimensionTokens = DimensionTokens;
 
-export const dimensionTokens: DimensionTokens = generateTokens([
-  [...DIMENSIONS],
-  [...SIZES],
-]) as DimensionTokens;
+export const dimensionTokens: DimensionTokens = generateTokens(
+  [[...DIMENSIONS], [...SIZES]],
+  "dimension",
+) as DimensionTokens;
 
 export const DEFAULT_DIMENSIONS: ThemeDimensionTokens = {
   size: {
-    xsmall: 24,
-    small: 32,
-    medium: 40,
-    large: 48,
-    xlarge: 64,
+    xsmall: rem(24),
+    small: rem(32),
+    medium: rem(40),
+    large: rem(48),
+    xlarge: rem(64),
   },
   spacing: {
-    xsmall: 4,
-    small: 8,
-    medium: 12,
-    large: 16,
-    xlarge: 24,
+    xsmall: `4px`,
+    small: `8px`,
+    medium: `12px`,
+    large: `16px`,
+    xlarge: `24px`,
   },
   radius: {
-    xsmall: 2,
-    small: 4,
-    medium: 6,
-    large: 8,
-    xlarge: 16,
+    xsmall: rem(2),
+    small: rem(4),
+    medium: rem(6),
+    large: rem(8),
+    xlarge: rem(16),
   },
 };
