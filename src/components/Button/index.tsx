@@ -6,8 +6,12 @@ export interface ButtonProps
   extends PolymorphicProps<"button">,
     Styles.ButtonStyleProps {}
 
-export const Button = ({ size, isSquare, ...props }: ButtonProps) => (
-  <BaseElement as="button" css={Styles.Main({ size, isSquare })} {...props} />
+export const Button = ({ size, palette, isSquare, ...props }: ButtonProps) => (
+  <BaseElement
+    as="button"
+    css={Styles.Main({ size, palette, isSquare })}
+    {...props}
+  />
 );
 
 Button.displayName = "Button";

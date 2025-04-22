@@ -17,7 +17,7 @@ export type BrandColorTokens = Record<Palette, Record<Shade, string>>;
 export type ThemeBrandColorTokens = BrandColorTokens;
 
 export type UtilityColorTokens = Record<"black" | "white", string>;
-export type ThemeUtilityColorTokens = UtilityColorTokens;
+export type ThemeUtilityColorTokens = { utility: UtilityColorTokens };
 
 export const brandColorTokens: BrandColorTokens = generateTokens(
   [[...PALETTES], SHADES.map((v) => `${v}`)],
@@ -59,6 +59,8 @@ export const DEFAULT_THEME_COLORS: ThemeBrandColorTokens = Object.entries(
 );
 
 export const DEFAULT_UTILITY_COLORS: ThemeUtilityColorTokens = {
-  black: "hsl(0 0 0)",
-  white: "hsl(0 0 100)",
+  utility: {
+    black: "hsl(0 0 0)",
+    white: "hsl(0 0 100)",
+  },
 };
