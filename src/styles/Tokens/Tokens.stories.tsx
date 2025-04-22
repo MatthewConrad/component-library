@@ -17,9 +17,9 @@ export const Default: StoryObj = {
   render: () => (
     <>
       <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-        {Object.entries(tokens.size).map(([key, value]) => (
+        {Object.entries(tokens.dimension.size).map(([key, value]) => (
           <div
-            key={`tokens-size-key`}
+            key={`tokens-size-${key}`}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -34,6 +34,33 @@ export const Default: StoryObj = {
                 outline: 1px solid black;
               `}
             />
+          </div>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+        {Object.entries(tokens.brandColor).map(([palette, shades]) => (
+          <div
+            key={`tokens-brandcolor-${palette}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <h3>{palette}</h3>
+            <div style={{ display: "flex" }}>
+              {Object.entries(shades).map(([shade, value]) => {
+                return (
+                  <div
+                    key={`${palette}-${shade}`}
+                    css={css`
+                      ${square(32)}
+                      background-color: ${value};
+                    `}
+                  />
+                );
+              })}
+            </div>
           </div>
         ))}
       </div>

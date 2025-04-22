@@ -5,6 +5,7 @@ export type Shade = (typeof SHADES)[number];
 
 export const PALETTES = [
   "ui",
+  "brand",
   "accent",
   "critical",
   "notice",
@@ -39,11 +40,12 @@ export const generatePaletteShadesHsl = (
   );
 
 const DEFAULT_COLORS_HUE_SAT: Record<Palette, [number, number]> = {
-  ui: [0, 0],
-  accent: [207, 88],
-  critical: [0, 0],
-  notice: [0, 0],
-  success: [0, 0],
+  ui: [240, 6],
+  brand: [207, 88],
+  accent: [341, 100],
+  critical: [0, 90],
+  notice: [50, 90],
+  success: [120, 80],
 };
 
 export const DEFAULT_THEME_COLORS: ThemeBrandColorTokens = Object.entries(
