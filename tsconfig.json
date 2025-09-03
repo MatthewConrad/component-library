@@ -17,7 +17,8 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "skipDefaultLibCheck": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["vitest/globals"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
