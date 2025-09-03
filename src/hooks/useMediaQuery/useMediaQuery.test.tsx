@@ -10,7 +10,8 @@ import { useMediaQuery } from ".";
 const handleCallback = vi.fn();
 
 // Ordinarily, would use `renderHook` instead of defining this whole component-under-test,
-// but the updates-match-on-change case causes `act` warnings, which I loathe!
+// but updating the mock state outside of the component
+// for the updates-match-on-change case causes `act` warnings, which I loathe!
 const UseSingleMQExample = ({ useCallback }: { useCallback?: boolean }) => {
   const isTouch = useMediaQuery(
     mediaQueryConditions.whileTouch,
