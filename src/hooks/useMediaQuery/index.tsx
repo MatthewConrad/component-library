@@ -2,13 +2,14 @@ import { DependencyList, useEffect, useState } from "react";
 
 /**
  * Uses `window.matchMedia` to determine whether or not a single media query condition is true.
+ *
+ * @param query A valid CSS `@media` query string to check for.
+ * @param callback A callback function fired when the match status changes.
+ * @param deps If present, hook will re-run if the values in the list change.
  */
 export const useMediaQuery = (
-  /** A valid CSS `@media` query string to check for. */
   query: string,
-  /** A callback function fired when the match status changes. */
   callback?: (match: boolean) => void,
-  /** If present, hook will re-run if the values in the list change. **/
   deps?: DependencyList,
 ) => {
   const [matches, setMatches] = useState(
